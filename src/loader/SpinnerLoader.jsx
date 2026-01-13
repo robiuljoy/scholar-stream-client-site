@@ -1,36 +1,43 @@
 import React from "react";
+import { FaGraduationCap } from "react-icons/fa";
 
 const SpinnerLoader = ({ fullScreen = false }) => {
   return (
     <div
       className={
         fullScreen
-          ? "fixed inset-0 z-50 flex items-center justify-center bg-[#081613] bg-opacity-90"
-          : "flex items-center justify-center w-full py-10"
+          ? "fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#081613] bg-opacity-90"
+          : "flex flex-col items-center justify-center w-full py-10"
       }
     >
-      <div className="relative flex items-center justify-center">
-        {/* Outer rotating ring */}
-        <div className="w-24 h-24 rounded-full border-8 border-t-transparent border-[#ffc108] animate-spin"></div>
-
-        {/* Middle pulsing ring */}
-        <div className="absolute w-16 h-16 rounded-full border-4 border-t-transparent border-[#00e0a1] animate-pulse"></div>
-
-        {/* Inner glowing core */}
-        <div className="absolute w-6 h-6 rounded-full bg-gradient-to-r from-[#ffc108] to-[#00e0a1] animate-ping"></div>
-
-        {/* Subtle rotation overlay */}
-        <div className="absolute w-10 h-10 rounded-full border-4 border-dashed border-[#ffffff55] animate-spin-slow"></div>
+      {/* Scholar Hat Icon */}
+      <div className="text-[#5b3cc4] text-6xl mb-6 animate-bounce">
+        <FaGraduationCap />
       </div>
+
+      {/* Loading Bar */}
+      <div className="relative w-64 h-4 bg-[#22049b]/30 rounded-full overflow-hidden">
+        <div className="absolute left-0 top-0 h-4 bg-gradient-to-r from-[#5b3cc4] to-[#22049b] animate-loading"></div>
+      </div>
+
+      <p className="mt-4 text-white font-semibold">Loading Scholarships...</p>
 
       <style>
         {`
-          @keyframes spin-slow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+          @keyframes loading {
+            0% { width: 0%; }
+            50% { width: 80%; }
+            100% { width: 0%; }
           }
-          .animate-spin-slow {
-            animation: spin-slow 4s linear infinite;
+          .animate-loading {
+            animation: loading 2s ease-in-out infinite;
+          }
+          .animate-bounce {
+            animation: bounce 1s infinite;
+          }
+          @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15%); }
           }
         `}
       </style>

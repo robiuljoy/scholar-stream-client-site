@@ -2,7 +2,7 @@
   {
     "scholarshipName": "Global Excellence Scholarship",
     "universityName": "University of Oxford",
-    "universityImage": "https://example.com/images/oxford.png",
+    "universityImage": "https://i.ibb.co.com/Fqzg0wJX/oxford.jpg",
     "universityCountry": "United Kingdom",
     "universityCity": "Oxford",
     "universityWorldRank": 1,
@@ -19,7 +19,7 @@
   {
     "scholarshipName": "Merit-Based International Scholarship",
     "universityName": "Harvard University",
-    "universityImage": "https://example.com/images/harvard.png",
+    "universityImage": "https://i.ibb.co.com/TxCVpThB/harvard.jpg",
     "universityCountry": "USA",
     "universityCity": "Cambridge",
     "universityWorldRank": 3,
@@ -34,9 +34,9 @@
     "postedUserEmail": "scholarships@harvard.edu"
   },
   {
-    "scholarshipName": "Future Leaders Scholarship",
+    "scholarshipName": "https://i.ibb.co.com/Z6hZjzTM/toronto.jpg",
     "universityName": "University of Toronto",
-    "universityImage": "https://example.com/images/toronto.png",
+    "universityImage": "https://i.ibb.co.com/Z6hZjzTM/toronto.jpg",
     "universityCountry": "Canada",
     "universityCity": "Toronto",
     "universityWorldRank": 18,
@@ -53,7 +53,7 @@
   {
     "scholarshipName": "Women in Tech Scholarship",
     "universityName": "Stanford University",
-    "universityImage": "https://example.com/images/stanford.png",
+    "universityImage": "https://i.ibb.co.com/QF5D5nqr/stanford.jpg",
     "universityCountry": "USA",
     "universityCity": "Stanford",
     "universityWorldRank": 2,
@@ -70,7 +70,7 @@
   {
     "scholarshipName": "Asia Pacific Excellence Award",
     "universityName": "National University of Singapore",
-    "universityImage": "https://example.com/images/nus.png",
+    "universityImage": "https://i.ibb.co.com/wFxJPHbf/singapore.jpg",
     "universityCountry": "Singapore",
     "universityCity": "Singapore",
     "universityWorldRank": 8,
@@ -87,7 +87,7 @@
   {
     "scholarshipName": "Innovation & Research Grant",
     "universityName": "Technical University of Munich",
-    "universityImage": "https://example.com/images/tum.png",
+    "universityImage": "https://i.ibb.co.com/8g2zzyLK/munich.jpg",
     "universityCountry": "Germany",
     "universityCity": "Munich",
     "universityWorldRank": 37,

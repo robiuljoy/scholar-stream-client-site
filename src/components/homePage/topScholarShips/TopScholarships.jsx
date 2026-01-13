@@ -3,10 +3,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router";
 import Container from "../../shared/Container";
 import { FaFilter } from "react-icons/fa";
+import { FaLocationArrow, FaGoogleScholar } from "react-icons/fa6";
+import { RiMoneyDollarCircleLine } from "react-icons/ri";
+import SpinnerLoader from "../../../loader/SpinnerLoader"; // import loader
 
 const TopScholarships = () => {
   const [allScholarships, setAllScholarships] = useState([]);
   const [filteredScholarships, setFilteredScholarships] = useState([]);
+  const [loading, setLoading] = useState(true); // loader state
 
   const [category, setCategory] = useState("");
   const [subject, setSubject] = useState("");
@@ -15,16 +19,24 @@ const TopScholarships = () => {
   const [showFilters, setShowFilters] = useState(false);
   const filterRef = useRef(null);
 
+  // Fetch data
   useEffect(() => {
+    setLoading(true);
     fetch("/scholar.json")
       .then((res) => res.json())
       .then((data) => {
         setAllScholarships(data);
         setFilteredScholarships(data.slice(0, 6));
-      });
+        setLoading(false); // stop loader after initial data is set
+      })
+      .catch(() => setLoading(false));
   }, []);
 
+  // Filter logic
   useEffect(() => {
+    if (!allScholarships.length) return;
+
+    setLoading(true); // show loader during filtering
     let filtered = [...allScholarships];
 
     if (category) {
@@ -32,16 +44,18 @@ const TopScholarships = () => {
         (item) => item.scholarshipCategory === category
       );
     }
-
     if (subject) {
       filtered = filtered.filter((item) => item.subjectCategory === subject);
     }
-
     if (location) {
       filtered = filtered.filter((item) => item.universityCountry === location);
     }
 
-    setFilteredScholarships(filtered.slice(0, 6));
+    // Wait until state update completes before hiding loader
+    setTimeout(() => {
+      setFilteredScholarships(filtered.slice(0, 6));
+      setLoading(false); // stop loader only after filtered cards are ready
+    }, 300); // small delay for smoothness
   }, [category, subject, location, allScholarships]);
 
   // Close filter panel when clicking outside
@@ -51,11 +65,9 @@ const TopScholarships = () => {
         setShowFilters(false);
       }
     };
-
     if (showFilters) {
       document.addEventListener("mousedown", handleClickOutside);
     }
-
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [showFilters]);
 
@@ -162,49 +174,65 @@ const TopScholarships = () => {
         </div>
 
         {/* ============ CARDS ============ */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredScholarships.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ scale: 0.9, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.4 }}
-              className="bg-white rounded-xl shadow-md hover:shadow-xl transition p-5 flex flex-col"
-            >
-              <img
-                src={item.universityImage}
-                alt={item.universityName}
-                className="h-40 w-full object-cover rounded-md mb-4"
-              />
-
-              <h3 className="text-lg font-semibold text-[#5b3cc4] mb-1">
-                {item.universityName}
-              </h3>
-
-              <p className="text-sm text-gray-600 mb-1">
-                📍 {item.universityCity}, {item.universityCountry}
-              </p>
-
-              <p className="text-sm text-gray-600 mb-1">
-                🎓 {item.scholarshipCategory}
-              </p>
-
-              <p className="text-sm text-gray-600 mb-4">
-                💰 Application Fee:{" "}
-                <span className="font-semibold">
-                  {item.applicationFees ? `$${item.applicationFees}` : "Free"}
-                </span>
-              </p>
-
-              <Link
-                to={`/scholarships/${item.id || i}`}
-                className="mt-auto inline-block text-center text-sm font-semibold text-white bg-[#5b3cc4] px-4 py-2 rounded-full hover:bg-[#22049b] transition"
+        {loading ? (
+          <SpinnerLoader fullScreen={false} />
+        ) : (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredScholarships.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ scale: 0.9, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 150, damping: 20 }}
+                className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-5 flex flex-col overflow-hidden relative"
               >
-                View Details
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+                {/* Image with overlay */}
+                <motion.div className="relative overflow-hidden rounded-xl mb-4">
+                  <motion.img
+                    src={item.universityImage}
+                    alt={item.universityName}
+                    className="h-44 w-full object-cover rounded-xl"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                  />
+                  <motion.div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 hover:opacity-100 transition" />
+                </motion.div>
+
+                {/* Info */}
+                <h3 className="text-lg font-bold text-[#5b3cc4] mb-2">
+                  {item.universityName}
+                </h3>
+
+                <p className="text-sm text-gray-600 mb-1 flex items-center gap-1">
+                  <FaLocationArrow className="text-[#5b3cc4]" />
+                  {item.universityCity}, {item.universityCountry}
+                </p>
+
+                <p className="text-sm text-gray-600 mb-1 flex items-center gap-1">
+                  <FaGoogleScholar className="text-[#5b3cc4]" />{" "}
+                  {item.scholarshipCategory}
+                </p>
+
+                <p className="text-sm text-gray-600 mb-4 flex items-center gap-1">
+                  <RiMoneyDollarCircleLine className="text-[#5b3cc4]" />{" "}
+                  Application Fee:{" "}
+                  <span className="font-semibold">
+                    {item.applicationFees ? `$${item.applicationFees}` : "Free"}
+                  </span>
+                </p>
+
+                {/* View Details Button */}
+                <Link
+                  to={`/scholarships/${item.id || i}`}
+                  className="mt-auto inline-block text-center text-sm font-semibold text-white bg-gradient-to-r from-[#5b3cc4] to-[#22049b] px-5 py-2 rounded-full hover:scale-105 transition shadow-md"
+                >
+                  View Details
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </Container>
     </section>
   );
