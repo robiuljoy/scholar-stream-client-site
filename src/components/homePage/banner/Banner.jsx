@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router";
 import { FaSearch } from "react-icons/fa";
+import Image1 from "../../../assets/banner01.jpg";
+import Image2 from "../../../assets/banner02.jpg";
+import Image3 from "../../../assets/banner03.jpg";
+import Image4 from "../../../assets/banner04.jpg";
 
-const images = [
-  "https://images.unsplash.com/photo-1523050854058-8df90110c9f1",
-  "https://images.unsplash.com/photo-1503676260728-1c00da094a0b",
-  "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f",
-];
+const images = [Image2, Image1, Image4];
 
 const Banner = () => {
   const [current, setCurrent] = useState(0);
@@ -51,11 +51,18 @@ const Banner = () => {
     <section className="relative h-[80vh] overflow-hidden">
       {/* Background Images */}
       {images.map((img, i) => (
-        <div
+        <motion.div
           key={i}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            i === current ? "opacity-100" : "opacity-0"
-          }`}
+          className="absolute inset-0"
+          initial={{ scale: 1 }}
+          animate={{
+            opacity: i === current ? 1 : 0,
+            scale: i === current ? 1.08 : 1,
+          }}
+          transition={{
+            opacity: { duration: 1 },
+            scale: { duration: 4, ease: "easeOut" },
+          }}
           style={{
             backgroundImage: `url(${img})`,
             backgroundSize: "cover",
