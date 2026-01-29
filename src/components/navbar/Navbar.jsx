@@ -57,7 +57,7 @@ const Navbar = () => {
               </Link>
 
               <Link
-                to="/login"
+                to="/auth/login"
                 className="border border-[#5b3cc4] text-[#5b3cc4] px-5 py-2 rounded-full font-semibold hover:bg-[#5b3cc4] hover:text-white transition"
               >
                 Log In
@@ -67,7 +67,7 @@ const Navbar = () => {
             {/* Mobile Controls */}
             <div className="md:hidden flex items-center gap-3">
               <Link
-                to="/login"
+                to="/auth/login"
                 className="border border-[#5b3cc4] text-[#5b3cc4] px-4 py-1.5 rounded-full font-semibold text-sm hover:bg-[#5b3cc4] hover:text-white transition"
               >
                 Log In
