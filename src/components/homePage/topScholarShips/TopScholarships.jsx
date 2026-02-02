@@ -41,7 +41,7 @@ const TopScholarships = () => {
 
     if (category) {
       filtered = filtered.filter(
-        (item) => item.scholarshipCategory === category
+        (item) => item.scholarshipCategory === category,
       );
     }
     if (subject) {
@@ -224,7 +224,7 @@ const TopScholarships = () => {
 
                 {/* View Details Button */}
                 <Link
-                  to={`/scholarships/${item.id || i}`}
+                  to={`/scholarship/${i}`}
                   className="mt-auto inline-block text-center text-sm font-semibold text-white bg-gradient-to-r from-[#5b3cc4] to-[#22049b] px-5 py-2 rounded-full hover:scale-105 transition shadow-md"
                 >
                   View Details

@@ -8,6 +8,8 @@ import DashboardLayout from "../layout/dashboard/DashboardLayout";
 import ErrorPage from "../pages/errorPage/ErrorPage";
 import AllScholarships from "../pages/allScholarships/AllScholarships";
 import ContactUs from "../pages/contactUs/ContactUs";
+import PrivateRoute from "./PrivateRoute";
+import ScholarshipDetails from "../pages/ScholarshipDetails";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +25,15 @@ export const router = createBrowserRouter([
         path: "/scholarships",
         element: <AllScholarships></AllScholarships>,
       },
+      {
+        path: "/scholarship/:id",
+        element: (
+          <PrivateRoute>
+            <ScholarshipDetails />
+          </PrivateRoute>
+        ),
+      },
+
       {
         path: "/contact",
         element: <ContactUs></ContactUs>,
