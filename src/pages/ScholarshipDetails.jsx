@@ -3,9 +3,17 @@ import { useParams } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthContext";
 import SpinnerLoader from "../loader/SpinnerLoader";
+import {
+  FaUniversity,
+  FaMapMarkerAlt,
+  FaGraduationCap,
+  FaGlobe,
+  FaMoneyBillWave,
+  FaCalendarAlt,
+} from "react-icons/fa";
 
 const ScholarshipDetails = () => {
-  const { id } = useParams(); // index from route
+  const { id } = useParams();
   const [scholarship, setScholarship] = useState(null);
   const { user } = useContext(AuthContext);
 
@@ -13,96 +21,115 @@ const ScholarshipDetails = () => {
     fetch("/scholar.json")
       .then((res) => res.json())
       .then((data) => {
-        const selectedScholarship = data[parseInt(id)];
-        setScholarship(selectedScholarship);
+        setScholarship(data[parseInt(id)]);
       })
       .catch((err) => console.log(err));
   }, [id]);
 
   const handleApplyScholarship = () => {
     Swal.fire({
-      title: "Application Started",
+      title: "🎓 Application Started",
       text: `Applicant: ${user?.email}`,
       icon: "info",
-      confirmButtonText: "Okay",
+      confirmButtonText: "Continue",
+      confirmButtonColor: "#5b3cc4",
     });
   };
 
   if (!scholarship) return <SpinnerLoader />;
 
   return (
-    <div className="bg-[#081613] p-6 flex justify-center min-h-screen">
-      <div className="bg-[#1E1A29] p-6 rounded-2xl max-w-3xl w-full shadow-lg">
-        <img
-          src={scholarship.universityImage}
-          alt={scholarship.universityName}
-          className="w-full h-72 object-cover rounded-md mb-4"
-        />
+    <div className="min-h-screen bg-linear-to-br from-[#0f2027] via-[#203a43] to-[#2c5364] py-12 px-4">
+      <div className="max-w-5xl mx-auto bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+        {/* ===== Hero Image ===== */}
+        <div className="relative h-80">
+          <img
+            src={scholarship.universityImage}
+            alt={scholarship.universityName}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
+          <div className="absolute bottom-6 left-6">
+            <h1 className="text-3xl md:text-4xl font-bold text-white">
+              {scholarship.scholarshipName}
+            </h1>
+            <p className="text-gray-300 mt-1">{scholarship.universityName}</p>
+          </div>
+        </div>
 
-        <h2 className="text-3xl text-white font-semibold mb-2">
-          {scholarship.scholarshipName}
-        </h2>
+        {/* ===== Content ===== */}
+        <div className="p-8 text-gray-200">
+          {/* Info Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <InfoCard icon={<FaUniversity />} label="University">
+              {scholarship.universityName}
+            </InfoCard>
 
-        <p className="text-gray-400 mb-1">
-          <span className="font-semibold">University:</span>{" "}
-          {scholarship.universityName}
-        </p>
+            <InfoCard icon={<FaMapMarkerAlt />} label="Location">
+              {scholarship.universityCity}, {scholarship.universityCountry}
+            </InfoCard>
 
-        <p className="text-gray-400 mb-1">
-          <span className="font-semibold">Location:</span>{" "}
-          {scholarship.universityCity}, {scholarship.universityCountry}
-        </p>
+            <InfoCard icon={<FaGlobe />} label="World Rank">
+              #{scholarship.universityWorldRank}
+            </InfoCard>
 
-        <p className="text-gray-400 mb-1">
-          <span className="font-semibold">World Rank:</span> #
-          {scholarship.universityWorldRank}
-        </p>
+            <InfoCard icon={<FaGraduationCap />} label="Degree">
+              {scholarship.degree}
+            </InfoCard>
 
-        <p className="text-gray-400 mb-1">
-          <span className="font-semibold">Subject:</span>{" "}
-          {scholarship.subjectCategory}
-        </p>
+            <InfoCard icon={<FaGraduationCap />} label="Subject">
+              {scholarship.subjectCategory}
+            </InfoCard>
 
-        <p className="text-gray-400 mb-1">
-          <span className="font-semibold">Degree:</span> {scholarship.degree}
-        </p>
+            <InfoCard icon={<FaMoneyBillWave />} label="Scholarship Type">
+              {scholarship.scholarshipCategory}
+            </InfoCard>
 
-        <p className="text-gray-400 mb-1">
-          <span className="font-semibold">Scholarship Type:</span>{" "}
-          {scholarship.scholarshipCategory}
-        </p>
+            <InfoCard icon={<FaMoneyBillWave />} label="Tuition Fees">
+              {scholarship.tuitionFees === 0
+                ? "Fully Funded"
+                : `$${scholarship.tuitionFees}`}
+            </InfoCard>
 
-        <p className="text-gray-400 mb-1">
-          <span className="font-semibold">Tuition Fees:</span>{" "}
-          {scholarship.tuitionFees === 0
-            ? "Fully Funded"
-            : `$${scholarship.tuitionFees}`}
-        </p>
+            <InfoCard icon={<FaMoneyBillWave />} label="Application Fee">
+              ${scholarship.applicationFees}
+            </InfoCard>
 
-        <p className="text-gray-400 mb-1">
-          <span className="font-semibold">Application Fee:</span> $
-          {scholarship.applicationFees}
-        </p>
+            <InfoCard icon={<FaMoneyBillWave />} label="Service Charge">
+              ${scholarship.serviceCharge}
+            </InfoCard>
 
-        <p className="text-gray-400 mb-3">
-          <span className="font-semibold">Service Charge:</span> $
-          {scholarship.serviceCharge}
-        </p>
+            <InfoCard icon={<FaCalendarAlt />} label="Deadline">
+              {new Date(scholarship.applicationDeadline).toLocaleDateString()}
+            </InfoCard>
+          </div>
 
-        <p className="text-gray-400 mb-4">
-          <span className="font-semibold">Deadline:</span>{" "}
-          {new Date(scholarship.applicationDeadline).toLocaleDateString()}
-        </p>
-
-        <button
-          onClick={handleApplyScholarship}
-          className="bg-white text-[#112e29] py-2 px-5 rounded-md font-semibold hover:bg-[#ffc108] transition"
-        >
-          Apply Scholarship
-        </button>
+          {/* Apply Button */}
+          <div className="flex justify-center">
+            <button
+              onClick={handleApplyScholarship}
+              className="px-10 py-3 rounded-full font-semibold text-white
+              bg-linear-to-r from-[#5b3cc4] to-[#22049b]
+              hover:scale-105 transition-all duration-300 shadow-lg"
+            >
+              Apply for Scholarship
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
+
+/* ===== Reusable Info Card ===== */
+const InfoCard = ({ icon, label, children }) => (
+  <div className="bg-white/10 border border-white/10 rounded-xl p-4 flex gap-3 items-start">
+    <div className="text-[#5b3cc4] text-xl mt-1">{icon}</div>
+    <div>
+      <p className="text-sm text-gray-400">{label}</p>
+      <p className="font-semibold">{children}</p>
+    </div>
+  </div>
+);
 
 export default ScholarshipDetails;

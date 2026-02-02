@@ -4,6 +4,7 @@ import Banner from "../../components/homePage/banner/Banner";
 import TopScholarships from "../../components/homePage/topScholarShips/TopScholarships";
 import SuccessStories from "../../components/homePage/successStories/SuccessStories";
 import FAQ from "../../components/homePage/FAQ/FAQ";
+import { Link } from "react-router";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
     >
       <Banner />
       <TopScholarships />
+
       <SuccessStories />
       <FAQ />
     </motion.div>
