@@ -4,7 +4,6 @@ import { Link, useNavigate, useLocation } from "react-router";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
 
-// Import Firebase auth and provider from your firebase.init.js
 import { auth } from "../../firebase/firebase.init";
 import {
   createUserWithEmailAndPassword,
@@ -45,20 +44,20 @@ const Register = () => {
     const { name, email, password, photo } = data;
 
     try {
-      // 1️⃣ Create Firebase user
+      //  Create Firebase user
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password,
       );
 
-      // 2️⃣ Update profile
+      //  Update profile
       await updateProfile(userCredential.user, {
         displayName: name,
         photoURL: photo,
       });
 
-      // ✅ Success
+      //  Success
       showToast("success", `Welcome, ${name}!`);
       navigate(from, { replace: true });
     } catch (error) {

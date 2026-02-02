@@ -15,37 +15,31 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  //  Register user (email + password)
   const registerUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  //  Login user
   const signInUser = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  //  Logout
   const logOutUser = () => {
     setLoading(true);
     return signOut(auth);
   };
 
-  //  Update user profile (name, photo)
   const updateUserProfile = (profileData) => {
     return updateProfile(auth.currentUser, profileData);
   };
 
-  //  Google login (Social Login)
   const googleLogin = () => {
     setLoading(true);
     const provider = new GoogleAuthProvider();
     return signInWithPopup(auth, provider);
   };
 
-  //  Keep user logged in on refresh
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);

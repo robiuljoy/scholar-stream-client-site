@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Robiul Awal Joy",
+    "email": "joy@gmail.com",
+    "photoURL": "/users/joy.png",
+    "role": "Student"
+  },
+  {
+    "name": "Ayesha Rahman",
+    "email": "ayesha@gmail.com",
+    "photoURL": "/users/ayesha.png",
+    "role": "Student"
+  },
+  {
+    "name": "Tanvir Hasan",
+    "email": "tanvir@gmail.com",
+    "photoURL": "/users/tanvir.png",
+    "role": "Student"
+  },
+  {
+    "name": "Nusrat Jahan",
+    "email": "nusrat@gmail.com",
+    "photoURL": "/users/nusrat.png",
+    "role": "Student"
+  },
+  {
+    "name": "Imran Khan",
+    "email": "imran@gmail.com",
+    "photoURL": "/users/imran.png",
+    "role": "Student"
+  },
+  {
+    "name": "Sadia Islam",
+    "email": "sadia@gmail.com",
+    "photoURL": "/users/sadia.png",
+    "role": "Moderator"
+  },
+  {
+    "name": "Arif Hossain",
+    "email": "arif@gmail.com",
+    "photoURL": "/users/arif.png",
+    "role": "Moderator"
+  },
+  {
+    "name": "Mehedi Hasan",
+    "email": "mehedi@gmail.com",
+    "photoURL": "/users/mehedi.png",
+    "role": "Admin"
+  },
+  {
+    "name": "Farhana Akter",
+    "email": "farhana@gmail.com",
+    "photoURL": "/users/farhana.png",
+    "role": "Student"
+  },
+  {
+    "name": "Sabbir Ahmed",
+    "email": "sabbir@gmail.com",
+    "photoURL": "/users/sabbir.png",
+    "role": "Admin"
+  }
+]

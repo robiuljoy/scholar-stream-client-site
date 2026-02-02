@@ -1,0 +1,102 @@
+[
+  {
+    "scholarshipId": "sch-001",
+    "universityName": "Harvard University",
+    "userName": "Robiul Awal Joy",
+    "userEmail": "joy@gmail.com",
+    "userImage": "/users/joy.png",
+    "ratingPoint": 5,
+    "reviewComment": "This scholarship completely changed my academic journey. Highly recommended!",
+    "reviewDate": "2026-01-15"
+  },
+  {
+    "scholarshipId": "sch-002",
+    "universityName": "University of Oxford",
+    "userName": "Ayesha Rahman",
+    "userEmail": "ayesha@gmail.com",
+    "userImage": "/users/ayesha.png",
+    "ratingPoint": 4,
+    "reviewComment": "Great opportunity with good financial support. The application process was smooth.",
+    "reviewDate": "2026-01-16"
+  },
+  {
+    "scholarshipId": "sch-003",
+    "universityName": "MIT",
+    "userName": "Tanvir Hasan",
+    "userEmail": "tanvir@gmail.com",
+    "userImage": "/users/tanvir.png",
+    "ratingPoint": 5,
+    "reviewComment": "Amazing scholarship for research-focused students. Faculty support is outstanding.",
+    "reviewDate": "2026-01-17"
+  },
+  {
+    "scholarshipId": "sch-004",
+    "universityName": "Stanford University",
+    "userName": "Nusrat Jahan",
+    "userEmail": "nusrat@gmail.com",
+    "userImage": "/users/nusrat.png",
+    "ratingPoint": 3,
+    "reviewComment": "Good scholarship, but the requirements were quite strict.",
+    "reviewDate": "2026-01-18"
+  },
+  {
+    "scholarshipId": "sch-005",
+    "universityName": "University of Toronto",
+    "userName": "Imran Khan",
+    "userEmail": "imran@gmail.com",
+    "userImage": "/users/imran.png",
+    "ratingPoint": 4,
+    "reviewComment": "Helped reduce my tuition fees significantly. Overall a positive experience.",
+    "reviewDate": "2026-01-19"
+  },
+  {
+    "scholarshipId": "sch-006",
+    "universityName": "University of Melbourne",
+    "userName": "Sadia Islam",
+    "userEmail": "sadia@gmail.com",
+    "userImage": "/users/sadia.png",
+    "ratingPoint": 5,
+    "reviewComment": "Excellent support and very transparent process. Truly grateful!",
+    "reviewDate": "2026-01-20"
+  },
+  {
+    "scholarshipId": "sch-007",
+    "universityName": "National University of Singapore",
+    "userName": "Arif Hossain",
+    "userEmail": "arif@gmail.com",
+    "userImage": "/users/arif.png",
+    "ratingPoint": 4,
+    "reviewComment": "Well-structured scholarship program with helpful guidance.",
+    "reviewDate": "2026-01-21"
+  },
+  {
+    "scholarshipId": "sch-008",
+    "universityName": "University of Tokyo",
+    "userName": "Mehedi Hasan",
+    "userEmail": "mehedi@gmail.com",
+    "userImage": "/users/mehedi.png",
+    "ratingPoint": 5,
+    "reviewComment": "One of the best scholarship experiences. Highly competitive but worth it.",
+    "reviewDate": "2026-01-22"
+  },
+  {
+    "scholarshipId": "sch-009",
+    "universityName": "University of Sydney",
+    "userName": "Farhana Akter",
+    "userEmail": "farhana@gmail.com",
+    "userImage": "/users/farhana.png",
+    "ratingPoint": 4,
+    "reviewComment": "Good financial aid and supportive administration.",
+    "reviewDate": "2026-01-23"
+  },
+  {
+    "scholarshipId": "sch-010",
+    "universityName": "University of California, Berkeley",
+    "userName": "Sabbir Ahmed",
+    "userEmail": "sabbir@gmail.com",
+    "userImage": "/users/sabbir.png",
+    "ratingPoint": 5,
+    "reviewComment": "This scholarship motivated me to aim higher academically. Fantastic program!",
+    "reviewDate": "2026-01-24"
+  }
+]
